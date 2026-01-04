@@ -14,7 +14,7 @@ GET /api/users/2 - Get the user with ID 2 - Done
 
 
 
-POST /api/users - Create new user
+POST /api/users - Create new user - Done
 
 PATCH /api/users/1 - Edit the user with ID 1
 
