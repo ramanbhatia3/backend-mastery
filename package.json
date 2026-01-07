@@ -4,11 +4,14 @@
   "description": "backend mastery journey",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon 14-mongodb-mongoose.js"
   },
   "author": "Raman",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "mongoose": "^9.1.2",
+    "nodemon": "^3.1.11"
   }
 }
