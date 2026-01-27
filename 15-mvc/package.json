@@ -1,10 +1,11 @@
 {
-  "name": "backend-mastery",
+  "name": "15-mvc",
   "version": "1.0.0",
   "description": "backend mastery journey",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon index.js"
   },
   "author": "Raman",
   "license": "ISC",

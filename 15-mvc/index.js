@@ -1,6 +1,6 @@
 const express = require("express")
 
-const { connectMongoDB } = require("./15-connection.js")
+const { connectMongoDB } = require("./connection.js")
 const { testMiddleware } = require("./middlewares")
 const userRouter = require("./routes/user.js")
 
@@ -8,7 +8,7 @@ const app = express();
 const PORT = 8000
 
 // Connection
-connectMongoDB("monogo url here").then(() => console.log("MongoDB Connected Successfully!"))
+connectMongoDB("mongo url here").then(() => console.log("MongoDB Connected Successfully!"))
 
 // Middlware - Plugin
 app.use(express.urlencoded({ extended: false }))
