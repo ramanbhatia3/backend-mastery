@@ -16,7 +16,7 @@ const userRoute = require("./routes/user.js")
 const app = express();
 const PORT = 8000;
 
-connectToMongoDB("mongodb://localhost:27017/short-url").then(() => console.log("MongoDB Connected Successfully!")).catch((err) => console.log("MongoDb Connection Failed:", err));
+connectToMongoDB("mongo url here").then(() => console.log("MongoDB Connected Successfully!")).catch((err) => console.log("MongoDb Connection Failed:", err));
 
 app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"))
