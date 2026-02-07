@@ -1,9 +1,14 @@
-const express = require("express")
+const express = require("express");
+const URL = require("../models/url");
 
-const router = express.Router()
+const router = express.Router();
 
-router.get("/", (req,res) => {
-    return res.render("home")
+router.get("/", async (req,res) => {
+    if (!req.user) return res.redirect("/login");
+    const allURLs = await URL.find({  createdBy: req.user._id });
+    return res.render("home", {
+        urls: allURLs
+    })
 })
 
 router.get("/signup", (req,res) => {

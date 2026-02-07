@@ -3,43 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomePage</title>
+    <title>Home Page</title>
     <style>
-        body{
-            background-color: #212121;
-            color: white;
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: #121212;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
             display: flex;
             flex-direction: column;
-            height: 80vh;
-            justify-content: center;
             align-items: center;
         }
-        h1{
-            font-size: 70px;
+
+        .container {
+            width: 80%;
+            margin: 50px;
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
 
-        a{
-            text-decoration: none;
-            border: 2px solid white;
+        h1 {
+            text-align: center;
+        }
+
+        .generated {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
             border-radius: 5px;
-            padding: 10px 20px;
-            margin: 0px 10px;
-            color: white;
-            font-size: 20px;
+            border: none;
+            outline: none;
         }
 
-        a:hover{
-            padding: 11px 21px;
-            font-size: 22px;
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4ea1ff;
+            color: #000;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #6bb3ff;
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background-color: #2a2a2a;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+
+        tbody tr:hover {
+            background-color: #252525;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome To HomePage</h1>
-    <div class="buttons">
-        <a href="#">LogIn</a>
-        <a href="#">SignUp</a>
+    <div class="container">
+        <h1>URL Shortener</h1>
+        <div class="generated">
+            <% if (locals.id) { %>
+                <p>URL Generated: http://localhost:8000/url/<%= id %>
+                </p>
+            <% } %>
+        </div>
+
+        <div>
+            <form method="POST" action="/url">
+                <label>Enter Original URL:</label>
+                <input type="text" name="url" placeholder="https://www.example.com" />
+                <button type="submit">Generate</button>
+            </form>
+        </div>
+
+        <div>
+            <% if (locals.urls) { %>
+                <table>
+                    <thead>
+                        <th>Sr No.</th>
+                        <th>Short ID</th>
+                        <th>Redirect URL</th>
+                        <th>Visits</th>
+                    </thead>
+                    <tbody>
+                        <% urls.forEach((url, index)=> { %>
+                            <tr>
+                                <td>
+                                    <%= index + 1 %>
+                                </td>
+                                <td>
+                                    <%= url.shortID %>
+                                </td>
+                                <td>
+                                    <%= url.redirectURL %>
+                                </td>
+                                <td>
+                                    <%= url.visitHistory.length %>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+            <% } %>
+        </div>
     </div>
-    
 </body>
 </html>
